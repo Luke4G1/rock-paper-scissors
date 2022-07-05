@@ -1,17 +1,21 @@
 function computerPlay() {
     let n = Math.floor((Math.random() * 3))
-
-    return (
-        (n == 0) ? 'Rock' : (n == 1) ? 'Paper' : 'Scissors'
-    )
-
+    let choice
+    if (n == 0) {
+        choice = "rock"
+    } else if (n == 1) {
+        choice = "paper"
+    } else {
+        choice = "scissors"
+    }
+    return choice
 }
 
 
 function playRound(playerSelection, computerSelection) {
 
     playerSelection = playerSelection.toLowerCase()
-    computerSelection = computerSelection.toLowerCase()
+
 
     var result;
 
@@ -49,4 +53,24 @@ function playRound(playerSelection, computerSelection) {
     }
 
     return result
+
 }
+
+let i = 1
+
+function game() {
+    var playerChoice
+
+    setTimeout(function play5Times() {
+        playerChoice = prompt("Write your move")
+        console.log(playRound(playerChoice, computerPlay()))
+        i++
+        if (i <= 5) {
+            game()
+        } else {
+            i = 0;
+            return
+        }
+    }, 3000)
+}
+game()
